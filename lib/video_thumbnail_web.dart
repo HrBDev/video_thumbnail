@@ -219,7 +219,7 @@ class VideoThumbnailWeb extends VideoThumbnailPlatform {
     final xhr = XMLHttpRequest()
       ..open('GET', videoSrc, true)
       ..responseType = 'blob';
-    headers.forEach(xhr.setRequestHeader);
+    headers.forEach((key, value) => xhr.setRequestHeader(key, value));
 
     xhr.onLoad.first.then((ProgressEvent value) {
       completer.complete(xhr.response as Blob);
